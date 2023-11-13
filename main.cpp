@@ -1,6 +1,9 @@
 #include <Novice.h>
+#include <memory>
+#include "Player.h"
+#include "Enemy.h"
 
-const char kWindowTitle[] = "学籍番号";
+const char kWindowTitle[] = "PG3_03_01";
 
 // Windowsアプリでのエントリーポイント(main関数)
 int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
@@ -11,6 +14,15 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 	// キー入力結果を受け取る箱
 	char keys[256] = {0};
 	char preKeys[256] = {0};
+
+	// player
+	std::unique_ptr<Player> player;
+	player = std::make_unique<Player>();
+	player->Initialize();
+	// enemy
+	std::unique_ptr<Enemy> enemy;
+	enemy = std::make_unique<Enemy>();
+	enemy->Initialize();
 
 	// ウィンドウの×ボタンが押されるまでループ
 	while (Novice::ProcessMessage() == 0) {
@@ -24,6 +36,9 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 		///
 		/// ↓更新処理ここから
 		///
+		
+		player->Update();
+		enemy->Update();
 
 		///
 		/// ↑更新処理ここまで
@@ -32,6 +47,9 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 		///
 		/// ↓描画処理ここから
 		///
+
+		player->Draw();
+		enemy->Draw();
 
 		///
 		/// ↑描画処理ここまで
