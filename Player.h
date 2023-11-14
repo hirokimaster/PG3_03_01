@@ -22,6 +22,5 @@ private:
 	bool isShot_;
 	char keys[256] = {0};
 	char preKeys[256] = {0};
-	Enemy* enemy_;
 };
 

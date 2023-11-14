@@ -1,7 +1,9 @@
 #pragma once
 #include "Vector2.h"
 #include "Novice.h"
-#include "Player.h"
+
+class Player;
+
 class Enemy {
 public:
 
@@ -11,10 +13,14 @@ public:
 
 	void Draw();
 
+	bool IsDead()const { return isDead_; }
+
+	void SetPlayer(Player* player) { player_ = player; }
+
 	
 private:
 	Vector2 position_ = {};
-	Player* player_;
+	Player* player_ = nullptr;
 	float moveSpeed_ = 5.0f;
 	bool isDead_ = false;
 };

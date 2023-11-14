@@ -11,9 +11,13 @@ void StageScene::Initialize() {
 }
 
 void StageScene::Update() {
+	enemy_->SetPlayer(player_.get());
 	player_->Update();
 	enemy_->Update();
-	
+	// 敵が死んだらゲームクリアに移行
+	if (enemy_->IsDead()) {
+		sceneNo_ = CLEAR;
+	}
 
 }
 

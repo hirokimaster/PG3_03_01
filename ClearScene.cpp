@@ -10,10 +10,10 @@ void ClearScene::Update() {
 	Novice::GetHitKeyStateAll(keys);
 
 	if (keys[DIK_R] && !preKeys[DIK_R]) {
-		sceneNo_ = STAGE;
+		sceneNo_ = TITLE;
 	}
 }
 
 void ClearScene::Draw() {
-	Novice::DrawBox((int)position.x, (int)position.y, 1280, 720, 0.0f, WHITE, kFillModeSolid);
+	Novice::DrawBox((int)position.x, (int)position.y, 1280, 720, 0.0f, BLUE, kFillModeSolid);
 }
