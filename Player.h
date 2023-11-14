@@ -1,6 +1,7 @@
 #pragma once
 #include "Novice.h"
 #include "Vector2.h"
+#include "Enemy.h"
 
 class Player {
 public:
@@ -11,13 +12,16 @@ public:
 
     void Draw(); 
 
+	Vector2 GetBulletPos();
+
 private:
 
 	Vector2 position_ = {};
-	Vector2 bulletPosition_[100] = {};
+	Vector2 bulletPosition_ = {};
 	float bulletSpeed_ = 0.0f;
-	bool isShot_[100];
+	bool isShot_;
 	char keys[256] = {0};
 	char preKeys[256] = {0};
+	Enemy* enemy_;
 };
 
